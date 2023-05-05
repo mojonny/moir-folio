@@ -21,6 +21,8 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 * {
+    margin:0;
+    padding:0;
     box-sizing: border-box;
     font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
   }
@@ -38,10 +40,6 @@ a:hover {
 }
 
 body,html {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
