@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { PropTypes } from 'prop-types';
 
 import Mktfy from './projects/MKTFY';
@@ -26,7 +26,17 @@ const DarkBG = styled.div`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	position: fixed;
+`;
+
+const fadeIn = keyframes` from { opacity: 0; }
+to { opacity: 1; } `;
+const FadingDiv = styled.div`
+	opacity: 0;
+	animation: ${fadeIn} 0.5s ease-in-out forwards;
+
+	&.visible {
+		opacity: 1;
+	}
 `;
 
 export default function Modal({
@@ -47,7 +57,7 @@ export default function Modal({
 
 	return (
 		<DarkBG onClick={() => handleClose(showMktfy, showTheSearch)}>
-			<ModalStyles onClick={(e) => e.stopPropagation()}>
+			<ModalStyles className="fade-in" onClick={(e) => e.stopPropagation()}>
 				<button onClick={handleClose}>x</button>
 				{showMktfy === true && <Mktfy showMktfy={showMktfy} />}
 				{showTheSearch === true && <TheSearch showTheSearch={showTheSearch} />}
